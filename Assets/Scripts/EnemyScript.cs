@@ -11,14 +11,17 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private float speed = 15f;
     [SerializeField] private AudioSource Death;
     [SerializeField] private AudioClip Dead;
+    [SerializeField] private int Health;
     private Rigidbody2D RB;
 
     private bool isEnemyMoving;
     private float moveDirection;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         RB = gameObject.GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         RB.velocity = speed * Vector2.left;
     }
 
@@ -33,12 +36,24 @@ public class EnemyScript : MonoBehaviour
 
         if (collision.transform.tag == "Bullet")
         {
-            Destroy(gameObject);
+            Health--;
+            StartCoroutine(StunEnemy());
+            animator.SetTrigger("Hit");
             AudioSource.PlayClipAtPoint(Dead ,transform.position);
             playerScript.UpdateScore();
             Instantiate(Explosion1, transform.position, Quaternion.identity);
             AudioSource.PlayClipAtPoint(fireExplosion, transform.position);
+            if(Health == 0)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 
+    private IEnumerator StunEnemy()
+    {
+        RB.velocity = Vector2.zero;
+        yield return new WaitForSeconds(1);
+        RB.velocity = Vector2.left * speed;
+    }
 }

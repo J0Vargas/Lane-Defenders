@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 7386285864348081983}
   - component: {fileID: 3284272006815162709}
   - component: {fileID: 6052660339473514241}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: snail
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,6 +135,7 @@ MonoBehaviour:
   speed: 5
   Death: {fileID: 0}
   Dead: {fileID: 8300000, guid: 7d9d202fc66f4004fb60cbf4a20834fa, type: 3}
+  Health: 3
 --- !u!61 &8344010108138253241
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 4589467571613355059}
   - component: {fileID: 1397685487723442496}
   - component: {fileID: 6573612114813518264}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: snake
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,6 +135,7 @@ MonoBehaviour:
   speed: 3
   Death: {fileID: 0}
   Dead: {fileID: 8300000, guid: 7d9d202fc66f4004fb60cbf4a20834fa, type: 3}
+  Health: 6
 --- !u!61 &8852498837216152819
 BoxCollider2D:
   m_ObjectHideFlags: 0
